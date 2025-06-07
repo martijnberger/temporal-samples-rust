@@ -52,6 +52,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                         }),
                         task_queue: Some(TaskQueue {
                             name: "schedule".to_string(),
+                            normal_name: "schedule".to_string(),
                             kind: TaskQueueKind::Unspecified as i32,
                         }),
                         ..Default::default()

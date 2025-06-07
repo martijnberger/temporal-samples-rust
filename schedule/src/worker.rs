@@ -2,6 +2,7 @@ use std::sync::Arc;
 use temporal_helpers::client::get_client;
 use temporal_sdk::Worker;
 use temporal_sdk_core::{init_worker, CoreRuntime};
+use temporal_sdk_core_api::worker::WorkerVersioningStrategy;
 use temporal_sdk_core_api::{telemetry::TelemetryOptionsBuilder, worker::WorkerConfigBuilder};
 
 use crate::workflows;
@@ -15,7 +16,8 @@ pub async fn start_worker() -> Result<(), Box<dyn std::error::Error>> {
     let worker_config = WorkerConfigBuilder::default()
         .namespace("default")
         .task_queue("schedule")
-        .worker_build_id("core-worker")
+        .client_identity_override(Some("core-worker".to_string()))
+        .versioning_strategy(WorkerVersioningStrategy::None { build_id: "rust-sdk".to_owned() })
         .build()?;
 
     let core_worker = init_worker(&runtime, worker_config, client)?;
