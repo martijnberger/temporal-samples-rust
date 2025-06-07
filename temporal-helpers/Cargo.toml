@@ -6,12 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1.0.71"
-log = "0.4.14"
-serde = { version = "1.0.130", features = ["derive"] }
-serde_json = "1.0.68"
-temporal-client = { path = "../../sdk-core/client" }
-temporal-sdk = { path = "../../sdk-core/sdk" }
-temporal-sdk-core = { path = "../../sdk-core/core" }
-temporal-sdk-core-api = { path = "../../sdk-core/core-api" }
-temporal-sdk-core-protos = { path = "../../sdk-core/sdk-core-protos" }
+anyhow = "1.0.98"
+log = "0.4.27"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+temporal-client = { git = "https://github.com/temporalio/sdk-core", package = "temporal-client" }
+temporal-sdk = { git = "https://github.com/temporalio/sdk-core", package = "temporal-sdk" }
+temporal-sdk-core = { git = "https://github.com/temporalio/sdk-core", package = "temporal-sdk-core" }
+temporal-sdk-core-api = { git = "https://github.com/temporalio/sdk-core", package = "temporal-sdk-core-api" }
+temporal-sdk-core-protos = { git = "https://github.com/temporalio/sdk-core", package = "temporal-sdk-core-protos" }
