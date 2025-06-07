@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use std::{collections::HashMap, time::Duration};
 use temporal_client::WorkflowClientTrait;
-use temporal_sdk::{ActContext, ActExitValue};
+use temporal_sdk::{ActContext, ActExitValue, ActivityError};
 use temporal_sdk_core::TaskToken;
 use temporal_sdk_core_protos::coresdk::AsJsonPayloadExt;
 use tokio::sync::Mutex;
@@ -20,7 +20,7 @@ struct Response {
 pub async fn do_something_async(
     ctx: ActContext,
     _payload: Option<String>,
-) -> Result<ActExitValue<()>, anyhow::Error> {
+) -> Result<ActExitValue<()>, ActivityError> {
     let shared_token: Arc<Mutex<Option<Vec<u8>>>> = Arc::new(Mutex::new(None));
     let shared_token_ref = shared_token.clone();
     {

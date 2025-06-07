@@ -7,7 +7,7 @@ use temporal_sdk_core_protos::coresdk::{
     workflow_commands::ActivityCancellationType, AsJsonPayloadExt,
 };
 
-pub async fn run_cancellable_activity(mut ctx: WfContext) -> WorkflowResult<u64> {
+pub async fn run_cancellable_activity(ctx: WfContext) -> WorkflowResult<u64> {
     info!("Inside run_cancellable_activity");
     debug!("Creating activity handle");
 
